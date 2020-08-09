@@ -1,3 +1,3 @@
 @echo off
-echo Compiling
-javac -cp .;lib\* -d classes src\java\*.java
+javac -d ../classes ../src\*.java
+pause
