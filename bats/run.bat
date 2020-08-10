@@ -1,3 +1,3 @@
 @echo off
-java -cp ../classes Practica %*
+java -cp ../classes practica.figuras.Practica %*
 pause 
