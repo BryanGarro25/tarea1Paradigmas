@@ -27,4 +27,10 @@ public double getY(){
   public double getAltura(){
     return altura;
   }
+
+  public double calcula_area(){
+    double a = base * altura;
+
+    return a;
+  }
 }

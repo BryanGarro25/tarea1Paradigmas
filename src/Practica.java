@@ -90,6 +90,7 @@ public static void leeFichero(){
 
 		Figura figura = new Circle("circulo",2.4,4.7,3.14);
 		System.out.println(figura.toString());
+		System.out.println(figura.calcula_area());
 		// leeFichero();
 		// boolean flag = true;
 		// while (flag){

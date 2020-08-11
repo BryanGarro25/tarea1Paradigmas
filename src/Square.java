@@ -18,8 +18,14 @@ public class Square extends Figura{
   public double getY(){
     return y;
   }
-  
+
   public double getLado(){
     return lado;
+  }
+
+  public double calcula_area(){
+      double a = lado*lado;
+
+      return a;
   }
 }
