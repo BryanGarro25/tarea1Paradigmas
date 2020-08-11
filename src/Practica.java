@@ -32,14 +32,19 @@ public class Practica {
             case "list":
 				break;
             case "circle":
+				commandValidator(commandSplited,3);
 				break;
             case "square":
+				commandValidator(commandSplited,3);
 				break;
 			case "rectangle":
+				commandValidator(commandSplited,4);
 				break;
 			case "triangle":
+				commandValidator(commandSplited,6);
 				break;
 			case "donut":
+				commandValidator(commandSplited,4);
 				break;
 			case "ellipse":
 				break;
@@ -51,7 +56,28 @@ public class Practica {
 		return true;
 
 	}
-
+	public static boolean commandValidator(String[] command,int cant){
+		
+		//System.out.println(command.length);
+		if(cant !=command.length-1){
+			System.out.println("The command \""+command[0]+"\" exist, but maybe you are using the wrong number of parameters.\nUser command help for more information.\n");
+			return false;
+		}
+		
+		for (int i = 1;i<command.length;i++){
+			try
+			{
+			  Double.parseDouble(command[i]);
+			}
+			catch(NumberFormatException e)
+			{
+				System.out.println("The parameter number "+i+": \""+command[i]+"\" has a syntax error.");
+				return false;
+			}
+		}
+		
+		return true;
+	}
 
 	public static String[] spliter2(String command){
 		String[] resp = command.split(" ");
@@ -90,17 +116,17 @@ public static void leeFichero(){
 
 		Figura figura = new Circle("circulo",2.4,4.7,3.14);
 		System.out.println(figura.toString());
-		// leeFichero();
-		// boolean flag = true;
-		// while (flag){
-		// 	System.out.print("cmd> ");
-		// 	Scanner sc= new Scanner(System.in);
-		// 	String str= sc.nextLine(); //reads string.
-		// 	//System.out.println(str);
-		// 	  str = str+" ";
-		// 	flag = eval(str);
-		//
-		// }
+		leeFichero();
+		boolean flag = true;
+		while (flag){
+			System.out.print("cmd> ");
+			Scanner sc= new Scanner(System.in);
+			String str= sc.nextLine(); //reads string.
+			//System.out.println(str);
+			  str = str+" ";
+			flag = eval(str);
+		
+		}
 		// String prueba = "Split con el metodo de java";
 		// String[] array = spliter2(prueba);
 		// for(int i = 0; i < array.length;i++){
