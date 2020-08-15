@@ -35,4 +35,17 @@ public class Triangle extends Figura{
   public double getY_vertice3(){
     return y_vertice3;
   }
+
+  public double calcula_area(){
+    return 0.0
+  }
+
+  public double area(){
+    double v1 = (x_vertice1*y_vertice2)+(x_vertice2*y_vertice3)+(x_vertice3*y_vertice1);
+    double v2 = (x_vertice1*y_vertice3)+(x_vertice3*y_vertice2)+(x_vertice2*y_vertice1);
+    double a = (v1-v2)/2;
+
+    return a;
+
+  }
 }

@@ -27,4 +27,9 @@ public class Circle extends Figura{
     return "Circulo con centro en (" + getX() + "," + getY() + ") y radio " + getRadio();
   }
 
+  public double calcula_area(){
+    double a = Math.pow(radio,2) * Math.PI;
+
+    return a;
+  }
 }

@@ -19,12 +19,18 @@ public class Donut extends Figura{
   public double getY(){
     return y;
   }
-  
+
   public double getRadio_mayor(){
     return radio_mayor;
   }
 
   public double getRadio_menor(){
     return radio_menor;
+  }
+
+  public double calcula_area(){
+    double a = (Math.pow(radio_mayor,2) - Math.pow(radio_menor,2))* Math.PI;
+
+    return a;
   }
 }
