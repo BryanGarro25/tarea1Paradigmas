@@ -12,8 +12,8 @@ package practica1;
 public class Rectangle extends Figuras{
     private double base, altura,x,y;
 
-    public Rectangle(double x, double y,double base, double altura) {
-        super("Rectangulo");
+    public Rectangle(int numero,double x, double y,double base, double altura) {
+        super("Rectangulo",numero);
         this.base = base;
         this.altura = altura;
         this.x = x;
@@ -43,5 +43,11 @@ public class Rectangle extends Figuras{
         return a;
     }
     
-    
+    public String toString(){
+        String salida = "rectangulo con esquina superior izquierda (" + this.getX()
+                + "," + this.getY() + "), con base " + this.getBase() + " y con altura " 
+                + this.getAltura();
+        
+        return salida;
+    }
 }

@@ -12,8 +12,8 @@ package practica1;
 public class Triangle extends Figuras{
     private double x_vertice1,y_vertice1,x_vertice2, y_vertice2, x_vertice3, y_vertice3;
 
-    public Triangle(double x_vertice1, double y_vertice1, double x_vertice2, double y_vertice2, double x_vertice3, double y_vertice3) {
-        super("Triangulo");
+    public Triangle(int numero,double x_vertice1, double y_vertice1, double x_vertice2, double y_vertice2, double x_vertice3, double y_vertice3) {
+        super("Triangulo",numero);
         this.x_vertice1 = x_vertice1;
         this.y_vertice1 = y_vertice1;
         this.x_vertice2 = x_vertice2;
@@ -55,5 +55,13 @@ public class Triangle extends Figuras{
         return a;
     }
     
+    public String toString(){
+        String salida = "triangulo con vertice 1 (" + this.getX_vertice1() 
+                + "," + this.getY_vertice1() + "), vertice 2 (" + this.getX_vertice2() 
+                + "," + this.getY_vertice2() + ") y vertice 3 (" + this.getX_vertice3() 
+                + "," + this.getY_vertice3();
+        
+        return salida;
+    }
     
 }

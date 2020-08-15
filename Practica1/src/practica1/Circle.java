@@ -12,8 +12,8 @@ package practica1;
 public class Circle extends Figuras{
     private double radio,x,y;
 
-    public Circle(double x, double y, double radio) {
-        super("Circulo");
+    public Circle(int numero,double x, double y, double radio) {
+        super("Circulo",numero);
         this.radio = radio;
         this.x = x;
         this.y = y;
@@ -37,4 +37,11 @@ public class Circle extends Figuras{
         return a; 
     }
     
+    public String toString(){
+        
+        String salida = "circulo con centro en(" + this.getX()
+                +","+ this.getY() + ") y radio "+ 
+                this.getRadio();
+        return salida;
+    }
 }

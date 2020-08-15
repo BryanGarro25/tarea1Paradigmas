@@ -12,9 +12,11 @@ package practica1;
 public abstract class Figuras {
     private String nombre;
     private double area;
+    private int numero;
 
-    public Figuras(String nombre) {
+    public Figuras(String nombre, int numero) {
         this.nombre = nombre;
+        this.numero = numero;
         this.area = 0.0;
     }
 
@@ -32,6 +34,14 @@ public abstract class Figuras {
 
     public void setArea(double area) {
         this.area = area;
+    }
+
+    public int getNumero() {
+        return numero;
+    }
+
+    public void setNumero(int numero) {
+        this.numero = numero;
     }
     
     public abstract double calcula_area();

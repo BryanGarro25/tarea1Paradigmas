@@ -12,8 +12,8 @@ package practica1;
 public class Donut extends Figuras {
     double radio_mayor, radio_menor,x,y;
 
-    public Donut(double x, double y,double radio_mayor, double radio_menor) {
-        super("Dona");
+    public Donut(int numero,double x, double y,double radio_mayor, double radio_menor) {
+        super("Dona", numero);
         this.radio_mayor = radio_mayor;
         this.radio_menor = radio_menor;
         this.x = x;
@@ -42,4 +42,10 @@ public class Donut extends Figuras {
         return a;
     }
       
+    public String toString(){   
+        String salida = "dona con centro en(" + this.getX()
+                +","+ this.getY() + "), radio mayor "+ 
+                this.getRadio_mayor() + " y radio menor " + this.getRadio_menor();
+        return salida;
+    }
 }
