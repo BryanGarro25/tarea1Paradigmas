@@ -30,25 +30,23 @@ public class Ventana extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        panelDibujo = new javax.swing.JScrollPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        panelDibujo.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
-        panelDibujo.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-        panelDibujo.setViewportBorder(javax.swing.BorderFactory.createEtchedBorder());
-        panelDibujo.setInheritsPopupMenu(true);
-        panelDibujo.setName("Panel"); // NOI18N
+        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+        jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelDibujo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 693, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 785, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelDibujo, javax.swing.GroupLayout.DEFAULT_SIZE, 489, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 172, Short.MAX_VALUE))
         );
 
         pack();
@@ -56,10 +54,10 @@ public class Ventana extends javax.swing.JFrame {
 
     /**
      * @param args the command line arguments
-    */
-    
+     */
+
     public void dibujar(Figura f) {
-        Graphics g = panelDibujo.getGraphics();
+        Graphics g = jScrollPane1.getGraphics();
         String nombre = f.getNombre();
         if(nombre.equals("Circulo")){
             Circulo.dibujar(g);
@@ -75,9 +73,8 @@ public class Ventana extends javax.swing.JFrame {
             Triangulo.dibujar(g);
         }
     }
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane panelDibujo;
     // End of variables declaration//GEN-END:variables
 }

@@ -176,32 +176,6 @@ public class Tarea1 {
         }
     
     public static void main(String[] args) {
-        // TODO code application logic here
-        
-//        Ventana v = new Ventana(); 
-//        Figura f = null;
-//        v.setVisible(true);
-//        boolean enEjecucion = true;
-//        v.setVisible(true);
-//        while(enEjecucion){
-//        System.out.println("Digite 4 coordenadas para dibujar la linea");
-//        Scanner entrada = new Scanner(System.in);
-//        String str= entrada.nextLine(); 
-//        
-//        String[] array = str.split(" ");
-//        System.out.println(array[0]);
-//        if(array[0].equals("circle")){
-//            f = new Circulo(110.0,150.6,8.8);
-//            v.dibujar(f);
-//        }else if(array[0].equals("square")){
-//            f = new Cuadrado(100.0,100.0,20);
-//            v.dibujar(f);
-//        }
-//        if(array[0].equals("adios")){
-//            enEjecucion = false;
-//        }
-//        }
-
         Tarea1 t = new Tarea1();
         boolean enEjecucion = true;
         while(enEjecucion){
