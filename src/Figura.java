@@ -67,7 +67,7 @@ public class Figura {
 	public String getNombre(){
 		return nombre;
 	}
-
+	public Rectangle getRectangle(){return r;}
 	public void setArea(double p_area){
 		 area = p_area;
 	}

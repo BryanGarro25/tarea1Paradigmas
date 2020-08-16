@@ -61,11 +61,11 @@ public class Practica extends VentanaAplicacion{
 
     private float escala = 1f;
     private Rectangle limites = null;
-    private final List<Figura> figuras;
+    private static final List<Figura> figuras = new ArrayList<>();;
 	
 	public Practica() throws HeadlessException {
         super("Ejemplo Base");
-        this.figuras = new ArrayList<>();
+        //this.figuras = 
         configurar();
     }
 	private void configurar() {
@@ -173,7 +173,17 @@ public class Practica extends VentanaAplicacion{
 				commandValidator(commandSplited,3);
 				break;
 			case "rectangle":
-				commandValidator(commandSplited,4);
+				//commandValidator(commandSplited,4);
+				Rectangle rec = new Rectangle(Integer.parseInt(commandSplited[1]), 
+												(Integer.parseInt(commandSplited[2])), 
+												(Integer.parseInt(commandSplited[3])),
+												(Integer.parseInt(commandSplited[4]))
+												);
+				figuras.add(new Figura(
+									TRAZO_BASE,
+									COLORES_BASE[1],
+									rec));
+												
 				break;
 			case "triangle":
 				commandValidator(commandSplited,6);
@@ -287,8 +297,8 @@ public class Practica extends VentanaAplicacion{
 	
 	private void generarPrueba() {
         Random rnd = new Random();
-        int n = 24;
-        System.out.printf("Generando prueba con %d figura(s)..%n", n);
+        int n = 4;
+       //System.out.printf("Generando prueba con %d figura(s)..%n", n);
 
         int mp = 800;
         int ms = 120;
@@ -299,44 +309,39 @@ public class Practica extends VentanaAplicacion{
         int minY = 0;
         int maxY = 0;
 
-        figuras.clear();
-
-        for (int i = 0; i < n; i++) {
-            int x = 0 + rnd.nextInt(mp);
-            int y = 0 + rnd.nextInt(mp);
-            int w = ms + rnd.nextInt(Ms);
-            int h = ms + rnd.nextInt(Ms);
-            figuras.add(new Figura(
-                    TRAZO_BASE,
-                    COLORES_BASE[rnd.nextInt(COLORES_BASE.length)],
-                    new Rectangle(x, y, w, h)));
-
-            if (i > 0) {
-                minX = Math.min(minX, x);
-                minY = Math.min(minY, y);
-                maxX = Math.max(maxX, x + w);
-                maxY = Math.max(maxY, y + h);
-            } else {
-                minX = x;
-                minY = y;
-                maxX = x + w;
-                maxY = y + h;
-            }
+       // figuras.clear();
+		
+		// for (int i = 0; i < n; i++) {
+            // int x = 0 + rnd.nextInt(mp);
+            // int y = 0 + rnd.nextInt(mp);
+            // int w = ms + rnd.nextInt(Ms);
+            // int h = ms + rnd.nextInt(Ms);
+            // figuras.add(new Figura(
+                    // TRAZO_BASE,
+                    // COLORES_BASE[rnd.nextInt(COLORES_BASE.length)],
+                    // new Rectangle(x, y, w, h)));
+        // }
+		
+        for (Figura f : figuras) {
+				minX = Math.min(minX, f.getRectangle().x);
+                minY = Math.min(minY, f.getRectangle().y);
+                maxX = Math.max(maxX, f.getRectangle().x + f.getRectangle().width);
+                maxY = Math.max(maxY, f.getRectangle().y + f.getRectangle().height);
         }
 
-        System.out.printf("min x: %d%n", minX);
+        /*System.out.printf("min x: %d%n", minX);
         System.out.printf("max x: %d%n", maxX);
         System.out.printf("min y: %d%n", minY);
-        System.out.printf("max y: %d%n", maxY);
+        System.out.printf("max y: %d%n", maxY);*/
 
         int margen = 8;
         for (Figura f : figuras) {
-            f.desplazar(margen - minX, margen - minY);
+            //f.desplazar(margen - minX, margen - minY);
         }
 
         limites = new Rectangle(0, 0, maxX - minX, maxY - minY);
         limites.grow(margen, margen);
-        ajustarPanel();
+        //ajustarPanel();
     }
 	
 	public void init() {
@@ -359,6 +364,7 @@ public class Practica extends VentanaAplicacion{
     }
 
 	public static void main(String[] args){
+		Practica p1 = new Practica();
 		try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
             JFrame.setDefaultLookAndFeelDecorated(true);
@@ -369,14 +375,15 @@ public class Practica extends VentanaAplicacion{
             System.err.printf("Excepción: '%s'%n", ex.getMessage());
         }
 
-        SwingUtilities.invokeLater(() -> {
-            mostrarInterfaz();
-        });
+        // SwingUtilities.invokeLater(() -> {
+            // mostrarInterfaz();
+        // });
 
 		
 		
 		boolean flag = true;
 		while (flag){
+			p1.init();
 			System.out.print("cmd> ");
 			Scanner sc= new Scanner(System.in);
 			String str= sc.nextLine(); //reads string.

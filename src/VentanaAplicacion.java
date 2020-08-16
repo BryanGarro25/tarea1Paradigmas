@@ -20,7 +20,7 @@ public abstract class VentanaAplicacion extends JFrame {
         configuracion = new Properties();
 
         rutaConfiguracion = getClass().getSimpleName().toLowerCase() + ".cfg";
-        System.out.printf("Configuración en: '%s'%n", rutaConfiguracion);
+        //System.out.printf("Configuración en: '%s'%n", rutaConfiguracion);
 
         try {
             configuracion.loadFromXML(new FileInputStream(rutaConfiguracion));
