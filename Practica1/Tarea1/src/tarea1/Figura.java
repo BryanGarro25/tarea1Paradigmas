@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package practica1;
+package tarea1;
 
 import java.awt.Graphics;
 
@@ -11,14 +11,12 @@ import java.awt.Graphics;
  *
  * @author Fiorella Salgado
  */
-public abstract class Figuras {
+public abstract class Figura {
     private String nombre;
     private double area;
-    private int numero;
 
-    public Figuras(String nombre, int numero) {
+    public Figura(String nombre) {
         this.nombre = nombre;
-        this.numero = numero;
         this.area = 0.0;
     }
 
@@ -38,16 +36,11 @@ public abstract class Figuras {
         this.area = area;
     }
 
-    public int getNumero() {
-        return numero;
-    }
-
-    public void setNumero(int numero) {
-        this.numero = numero;
-    }
-    
     public abstract double calcula_area();
-    
-    public abstract void dibujarFigura(Graphics g, double escala);
 
+    /**
+     *
+     * @param g
+     */
+    
 }
