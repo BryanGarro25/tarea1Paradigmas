@@ -12,7 +12,7 @@ import java.awt.Graphics;
  * @author Fiorella Salgado
  */
 public class Dona extends Figura{
-    public double radio_mayor, radio_menor,x,y;
+    public static double radio_mayor, radio_menor,x,y;
 
     public Dona(double p_x, double p_y, double p_radio_mayor, double p_radio_menor){
       super("Dona");
@@ -45,7 +45,7 @@ public class Dona extends Figura{
         return a;
     }
     
-    public void dibujarFigura(Graphics g, double escala) {
+    public static void dibujar(Graphics g) {
         
         g.drawOval(
                 (int) ((x - (radio_mayor/2))), 

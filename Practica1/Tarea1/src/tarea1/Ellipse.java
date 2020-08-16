@@ -14,9 +14,6 @@ import java.awt.Graphics;
 public class Ellipse extends Figura{
     private static double radio_mayor,radio_menor,x,y;
 
-    public Ellipse(String nombre) {
-        super(nombre);
-    }
 
     public Ellipse(double x, double y, double radio, double radio2) {
         super("Ellipse");

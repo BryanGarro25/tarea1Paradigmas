@@ -60,10 +60,19 @@ public class Ventana extends javax.swing.JFrame {
     
     public void dibujar(Figura f) {
         Graphics g = panelDibujo.getGraphics();
-        if(f.getNombre().equals("Circulo")){
+        String nombre = f.getNombre();
+        if(nombre.equals("Circulo")){
             Circulo.dibujar(g);
-        }else if(f.getNombre().equals("Cuadrado")){
+        }else if(nombre.equals("Cuadrado")){
             Cuadrado.dibujar(g);
+        }else if(nombre.equals("Dona")){
+            Dona.dibujar(g);
+        }else if(nombre.equals("Ellipse")){
+            Ellipse.dibujar(g);
+        }else if(nombre.equals("Rectangulo")){
+            Rectangulo.dibujar(g);
+        }else{
+            Triangulo.dibujar(g);
         }
     }
     

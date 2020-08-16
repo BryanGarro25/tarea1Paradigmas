@@ -20,7 +20,6 @@ public class Circulo extends Figura{
         this.x = x;
         this.y = y;
     }
-
     public double getRadio() {
         return radio;
     }
