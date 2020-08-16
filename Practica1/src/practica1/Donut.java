@@ -5,6 +5,10 @@
  */
 package practica1;
 
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Shape;
+
 /**
  *
  * @author Fiorella Salgado
@@ -47,5 +51,30 @@ public class Donut extends Figuras {
                 +","+ this.getY() + "), radio mayor "+ 
                 this.getRadio_mayor() + " y radio menor " + this.getRadio_menor();
         return salida;
+    }
+
+    @Override
+    public void dibujarFigura(Graphics bg, double escala) {
+        Graphics2D g = (Graphics2D) bg;
+        
+        g.fillOval(
+                (int) (escala * (x - (radio_mayor/2))), 
+                (int) (escala * (y - (radio_mayor/2))), 
+                (int) (escala * radio_mayor), 
+                (int) (escala * radio_mayor)
+        );
+        g.drawOval(
+                (int) (escala * (x - (radio_mayor/2))), 
+                (int) (escala * (y - (radio_mayor/2))), 
+                (int) (escala * radio_mayor), 
+                (int) (escala * radio_mayor)
+        );
+        
+        g.drawOval(
+                (int) (escala * (x - (radio_menor/2))), 
+                (int) (escala * (y - (radio_menor/2))), 
+                (int) (escala * radio_menor), 
+                (int) (escala * radio_menor)
+        );
     }
 }

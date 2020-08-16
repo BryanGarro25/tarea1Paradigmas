@@ -5,6 +5,9 @@
  */
 package practica1;
 
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+
 /**
  *
  * @author Fiorella Salgado
@@ -43,6 +46,24 @@ public class Square extends Figuras{
                 + this.getX() + "," + this.getY() + ") y con lado " + 
                 this.getLado();
         return salida;
+    }
+
+    @Override
+    public void dibujarFigura(Graphics bg, double escala) {
+       Graphics2D g = (Graphics2D) bg;
+        
+        g.fillRect(
+                (int) (escala * x),
+                (int) (escala * y),
+                (int) (escala * lado),
+                (int) (escala * lado)
+        );
+        g.drawRect(
+                (int) (escala * x),
+                (int) (escala * y),
+                (int) (escala * lado),
+                (int) (escala * lado)
+        );
     }
     
 }

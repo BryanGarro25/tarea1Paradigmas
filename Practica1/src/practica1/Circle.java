@@ -5,6 +5,9 @@
  */
 package practica1;
 
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+
 /**
  *
  * @author Fiorella Salgado
@@ -43,5 +46,17 @@ public class Circle extends Figuras{
                 +","+ this.getY() + ") y radio "+ 
                 this.getRadio();
         return salida;
+    }
+
+    @Override
+    public void dibujarFigura(Graphics bg, double escala) {
+        Graphics2D g = (Graphics2D) bg;
+        
+        g.drawOval(
+                (int) (escala * (x - (radio/2))), 
+                (int) (escala * (y - (radio/2))), 
+                (int) (escala * radio), 
+                (int) (escala * radio)
+        );
     }
 }

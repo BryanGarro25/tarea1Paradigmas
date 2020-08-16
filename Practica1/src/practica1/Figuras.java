@@ -5,6 +5,8 @@
  */
 package practica1;
 
+import java.awt.Graphics;
+
 /**
  *
  * @author Fiorella Salgado
@@ -46,4 +48,6 @@ public abstract class Figuras {
     
     public abstract double calcula_area();
     
+    public abstract void dibujarFigura(Graphics g, double escala);
+
 }

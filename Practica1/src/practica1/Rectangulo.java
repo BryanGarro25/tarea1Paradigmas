@@ -5,14 +5,17 @@
  */
 package practica1;
 
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+
 /**
  *
  * @author Fiorella Salgado
  */
-public class Rectangle extends Figuras{
+public class Rectangulo extends Figuras{
     private double base, altura,x,y;
 
-    public Rectangle(int numero,double x, double y,double base, double altura) {
+    public Rectangulo(int numero,double x, double y,double base, double altura) {
         super("Rectangulo",numero);
         this.base = base;
         this.altura = altura;
@@ -49,5 +52,25 @@ public class Rectangle extends Figuras{
                 + this.getAltura();
         
         return salida;
+    }
+
+    @Override
+    public void dibujarFigura(Graphics bg, double escala) {
+        Graphics2D g = (Graphics2D) bg;
+        
+        g.fillRect(
+                (int) (escala * x),
+                (int) (escala * y),
+                (int) (escala * base),
+                (int) (escala * altura)
+        );
+        g.drawRect(
+                (int) (escala * x),
+                (int) (escala * y),
+                (int) (escala * base),
+                (int) (escala * altura)
+        );
+        
+        
     }
 }

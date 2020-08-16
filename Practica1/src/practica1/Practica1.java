@@ -6,6 +6,7 @@
 package practica1;
 import java.util.*;
 import java.io.*;
+;
 
 /**
  *
@@ -33,6 +34,28 @@ public class Practica1 {
         return comando;
     }
     
+    public static boolean commandValidator(String[] command,int cant){
+
+            //System.out.println(command.length);
+            if(cant !=command.length-1){
+                    System.out.println("The command \""+command[0]+"\" exist, but maybe you are using the wrong number of parameters.\nUser command help for more information.\n");
+                    return false;
+            }
+
+            for (int i = 1;i<command.length;i++){
+                    try
+                    {
+                      Double.parseDouble(command[i]);
+                    }
+                    catch(NumberFormatException e)
+                    {
+                            System.out.println("The parameter number "+i+": \""+command[i]+"\" has a syntax error.");
+                            return false;
+                    }
+            }
+
+            return true;
+    }
     
     
     public static String[] spliter2(String command){
@@ -88,6 +111,10 @@ public class Practica1 {
     }
     
     public static void main(String[] args) {
+        Vista v = new Vista();
+        Figuras f = new Circle(1,5.5,2.2,10.0);
+        v.paintComponent(f);
+        
     }
-    
+
 }

@@ -5,11 +5,17 @@
  */
 package practica1;
 
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Rectangle;
+
 /**
  *
  * @author Fiorella Salgado
  */
 public class Triangle extends Figuras{
+    
+    
     private double x_vertice1,y_vertice1,x_vertice2, y_vertice2, x_vertice3, y_vertice3;
 
     public Triangle(int numero,double x_vertice1, double y_vertice1, double x_vertice2, double y_vertice2, double x_vertice3, double y_vertice3) {
@@ -62,6 +68,32 @@ public class Triangle extends Figuras{
                 + "," + this.getY_vertice3();
         
         return salida;
+    }
+
+    @Override
+    public void dibujarFigura(Graphics bg, double escala) {
+        Graphics2D g = (Graphics2D) bg;
+        
+        g.drawLine(
+                (int) (escala * x_vertice1),
+                (int) (escala * y_vertice1),
+                (int) (escala * x_vertice2),
+                (int) (escala * y_vertice2)
+        );
+        
+        g.drawLine(
+                (int) (escala * x_vertice2),
+                (int) (escala * y_vertice2),
+                (int) (escala * x_vertice3),
+                (int) (escala * y_vertice3)
+        );
+        
+        g.drawLine(
+                (int) (escala * x_vertice3),
+                (int) (escala * y_vertice3),
+                (int) (escala * x_vertice1),
+                (int) (escala * y_vertice1)
+        );
     }
     
 }
