@@ -53,4 +53,11 @@ public class Ellipse extends Figura{
                 (int) (radio_menor)
         );
     }
+    
+    public static String mensaje(){   
+        String salida = "ellipse con centro en(" + x
+                +","+ y + "), radio mayor "+ 
+                radio_mayor + " y radio menor " + radio_menor;
+        return salida;
+    }
 }

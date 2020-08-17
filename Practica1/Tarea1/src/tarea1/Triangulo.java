@@ -77,4 +77,13 @@ public class Triangulo extends Figura{
                 (int) (y_vertice1)
         );
     }
+    
+    public static String mensaje(){
+        String salida = "triangulo con vertice 1 (" + x_vertice1 
+                + "," + y_vertice1 + "), vertice 2 (" + x_vertice2 
+                + "," + y_vertice2 + ") y vertice 3 (" + x_vertice3 
+                + "," + y_vertice3;
+        
+        return salida;
+    }
 }

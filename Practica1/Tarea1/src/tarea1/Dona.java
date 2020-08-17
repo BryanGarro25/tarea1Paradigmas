@@ -61,4 +61,11 @@ public class Dona extends Figura{
                 (int) (radio_menor)
         );
     }
+    
+     public static String mensaje(){   
+        String salida = "dona con centro en(" + x
+                +","+ y + "), radio mayor "+ 
+                radio_mayor + " y radio menor " + radio_menor;
+        return salida;
+    }
 }

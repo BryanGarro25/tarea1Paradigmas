@@ -46,4 +46,11 @@ public class Circulo extends Figura{
                 (int) (radio)
         );
     }
+    
+    public static String mensaje(){
+        String salida = "circulo con centro en(" + x
+                +","+ y + ") y radio "+ 
+                radio;
+        return salida;
+    }
 }

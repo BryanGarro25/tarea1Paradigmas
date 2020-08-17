@@ -54,5 +54,11 @@ public double getY(){
         );
     }
     
-    
+    public static String mensaje(){
+        String salida = "rectangulo con esquina superior izquierda (" + x
+                + "," + y + "), con base " + base + " y con altura " 
+                + altura;
+        
+        return salida;
+    }
 }

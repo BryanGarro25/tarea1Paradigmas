@@ -49,5 +49,12 @@ public class Cuadrado extends Figura{
                 (int) (lado)
         );
     }
+    
+     public static String mensaje(){   
+         String salida = "cuadrado con esquina superior derecha ("
+                + x + "," + y + ") y con lado " + 
+                lado;
+        return salida;
+    }
 }
 

@@ -29,24 +29,44 @@ public class Ventana extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
+        panelDibujo = new javax.swing.JScrollPane();
+        panelComandos = new javax.swing.JScrollPane();
+        areaComandos = new javax.swing.JTextArea();
+        titulo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
-        jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        panelDibujo.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+        panelDibujo.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+
+        panelComandos.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+
+        areaComandos.setColumns(20);
+        areaComandos.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        areaComandos.setRows(5);
+        panelComandos.setViewportView(areaComandos);
+
+        titulo.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        titulo.setText("Comandos Digitados: ");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 785, Short.MAX_VALUE)
+            .addComponent(panelDibujo, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(panelComandos, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 785, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 172, Short.MAX_VALUE))
+                .addComponent(panelDibujo, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                .addComponent(panelComandos, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -57,7 +77,7 @@ public class Ventana extends javax.swing.JFrame {
      */
 
     public void dibujar(Figura f) {
-        Graphics g = jScrollPane1.getGraphics();
+        Graphics g = panelDibujo.getGraphics();
         String nombre = f.getNombre();
         if(nombre.equals("Circulo")){
             Circulo.dibujar(g);
@@ -73,8 +93,17 @@ public class Ventana extends javax.swing.JFrame {
             Triangulo.dibujar(g);
         }
     }
+    
+    public void agregarComando(String comando){
+        if (!comando.isEmpty()) {
+            areaComandos.append(String.format("%s%n", comando));
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea areaComandos;
+    private javax.swing.JScrollPane panelComandos;
+    private javax.swing.JScrollPane panelDibujo;
+    private javax.swing.JLabel titulo;
     // End of variables declaration//GEN-END:variables
 }

@@ -5,12 +5,16 @@
  */
 package tarea1;
 
+import java.awt.List;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.util.ArrayList;
 import java.util.Scanner;
+import java.io.*;
+import java.util.*;
 
 /**
  *
@@ -23,19 +27,19 @@ public class Tarea1 {
      */
     
     private static Ventana ventana;
+    private static ArrayList<Figura> figuras;
 
     public Tarea1() {
         this.ventana = new Ventana();
         ventana.setVisible(true);
+        figuras = new ArrayList();
     }
     
     
     
     public static boolean eval(String command){
         String[] commandSplited = spliter2(command);
-        //System.out.println("entra");
-        //System.out.println(commandSplited[0]);
-        //System.out.println("entra");
+        Figura f = null;
         switch(commandSplited[0]){
                 case "exit":
                         System.out.println("bye :)");
@@ -48,21 +52,47 @@ public class Tarea1 {
                         System.out.println("triangle <x vertice 1> <y vertice 1> <x vertice 2> <y vertice 2> <x vertice 3> <y vertice 3>");
                         System.out.println("donut <x> <y> <radio mayor> <radio menor>");
                         System.out.println("ellipse <x> <y> <radio mayor> <radio menor>");
+                        System.out.println("read file <pathFile>");
                         System.out.println("delete <position>");
                         System.out.println("<coordenadas>");
                         System.out.println("list");
                         System.out.println("exit\n");
                         break;
                 case "delete":
+                        if(commandValidator(commandSplited,1)){
+                            figuras.remove(Integer.parseInt(commandSplited[1]));
+                        }
                         break;
                 case "list":
+                        ventana.agregarComando("list -> Lista de Figuras que se han dibujado: ");
+                        int cont = 0;
+                        for(Figura fi:figuras){
+                            String nombre = fi.getNombre();
+                            cont++;
+                            if(nombre.equals("Circulo")){
+                                ventana.agregarComando("Figura "+ cont + ":" + Circulo.mensaje());
+                            }else if(nombre.equals("Cuadrado")){
+                                ventana.agregarComando("Figura "+ cont + ":" + Cuadrado.mensaje());
+                            }else if(nombre.equals("Dona")){
+                                ventana.agregarComando("Figura "+ cont + ":" + Dona.mensaje());
+                            }else if(nombre.equals("Ellipse")){
+                                ventana.agregarComando("Figura "+ cont + ":" + Ellipse.mensaje());
+                            }else if(nombre.equals("Rectangulo")){
+                                ventana.agregarComando("Figura "+ cont + ":" + Rectangulo.mensaje());
+                            }else{
+                                ventana.agregarComando("Figura "+ cont + ":" + Triangulo.mensaje());
+                            }
+                        }
                         break;
                 case "circle":
                         if(commandValidator(commandSplited,3)){
                             double x = Double.parseDouble(commandSplited[1]);
                             double y = Double.parseDouble(commandSplited[2]);
                             double r = Double.parseDouble(commandSplited[3]);
-                            ventana.dibujar(new Circulo(x,y,r));
+                            ventana.agregarComando(command);
+                            f = new Circulo(x,y,r);
+                            ventana.dibujar(f);
+                            figuras.add(f);
                         }
                         break;
                 case "square":
@@ -70,7 +100,10 @@ public class Tarea1 {
                             double x = Double.parseDouble(commandSplited[1]);
                             double y = Double.parseDouble(commandSplited[2]);
                             double r = Double.parseDouble(commandSplited[3]);
-                            ventana.dibujar(new Cuadrado(x,y,r));
+                            ventana.agregarComando("Figura "+ figuras.size() + ":" + command);
+                            f = new Cuadrado(x,y,r);
+                            ventana.dibujar(f);
+                            figuras.add(f);
                         }
                         break;
                 case "rectangle":
@@ -80,7 +113,10 @@ public class Tarea1 {
                             double y = Double.parseDouble(commandSplited[2]);
                             double b = Double.parseDouble(commandSplited[3]);
                             double a = Double.parseDouble(commandSplited[4]);
-                            ventana.dibujar(new Rectangulo(x,y,b,a));
+                            ventana.agregarComando("Figura "+ figuras.size() + ":" + command);
+                            f = new Rectangulo(x,y,b,a);
+                            ventana.dibujar(f);
+                            figuras.add(f);
                         }
                         break;
                 case "triangle":
@@ -91,7 +127,10 @@ public class Tarea1 {
                             double y2 = Double.parseDouble(commandSplited[4]);
                             double x3 = Double.parseDouble(commandSplited[5]);
                             double y3 = Double.parseDouble(commandSplited[6]);
-                            ventana.dibujar(new Triangulo(x1,y1,x2,y2,x3,y3));
+                            ventana.agregarComando("Figura "+ figuras.size() + ":" + command);
+                            f = new Triangulo(x1,y1,x2,y2,x3,y3);
+                            ventana.dibujar(f);
+                            figuras.add(f);
                         }
                         break;
                 case "donut":
@@ -100,7 +139,10 @@ public class Tarea1 {
                             double y = Double.parseDouble(commandSplited[2]);
                             double r1 = Double.parseDouble(commandSplited[3]);
                             double r2 = Double.parseDouble(commandSplited[4]);
-                            ventana.dibujar(new Dona(x,y,r1,r2));
+                            ventana.agregarComando("Figura "+ figuras.size() + ":" + command);
+                            f = new Dona(x,y,r1,r2);
+                            ventana.dibujar(f);
+                            figuras.add(f);
                         }
                         break;
                 case "ellipse":
@@ -109,7 +151,10 @@ public class Tarea1 {
                             double y = Double.parseDouble(commandSplited[2]);
                             double r1 = Double.parseDouble(commandSplited[3]);
                             double r2 = Double.parseDouble(commandSplited[4]);
-                            ventana.dibujar(new Ellipse(x,y,r1,r2));
+                            ventana.agregarComando("Figura "+ figuras.size() + ":" + command);
+                            f = new Ellipse(x,y,r2,r2);
+                            ventana.dibujar(f);
+                            figuras.add(f);
                         }
                         break;
                 default:
@@ -150,43 +195,48 @@ public class Tarea1 {
 		return resp;
 	}
 
-	public static void leeFichero(){
-            File archivo = null;
-            FileReader fr = null;
-            BufferedReader br = null;
+	public static ArrayList<String> leeFichero(String path){
+            ArrayList<String> comando = new ArrayList();
+            
                     try {
-                             archivo = new File ("../comandos.txt");
-                             fr = new FileReader (archivo);
-                             br = new BufferedReader(fr);
-
-                             String comandos;
-                             while((comandos = br.readLine())!=null)
-                                    System.out.println(comandos);
-                    }catch(Exception e){
-                       e.printStackTrace();
-                    }finally{
-                        try{
-                           if( fr != null ){
-                              fr.close();
-                           }
-                        }catch (Exception e2){
-                           e2.printStackTrace();
+                        Scanner input = new Scanner(new File(path));
+                        while (input.hasNextLine()) {
+                            String line = input.nextLine();
+                            comando.add(line);
                         }
+                        input.close();
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
                     }
+            return comando;
         }
     
+        public void procesarFichero(String path){
+            ArrayList<String> comandos = this.leeFichero(path);
+            
+            for(String c:comandos){
+                this.eval(c);
+            }
+        }
+        
     public static void main(String[] args) {
+        
+        
         Tarea1 t = new Tarea1();
-        boolean enEjecucion = true;
-        while(enEjecucion){
-            System.out.println("Digite el comando");
+        System.out.println("Digite el comando");
             Scanner entrada = new Scanner(System.in);
             String str= entrada.nextLine();
-            if(str.equals("exit")){
-                enEjecucion = false;
-            }
-            t.eval(str);
-        }
+        t.eval(str);
+//        boolean enEjecucion = true;
+//        while(enEjecucion){
+//            System.out.println("Digite el comando");
+//            Scanner entrada = new Scanner(System.in);
+//            String str= entrada.nextLine();
+//            if(str.equals("exit")){
+//                enEjecucion = false;
+//            }
+//            t.eval(str);
+//        }
     }
     
     
