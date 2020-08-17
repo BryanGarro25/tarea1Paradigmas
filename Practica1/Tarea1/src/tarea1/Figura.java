@@ -9,7 +9,7 @@ import java.awt.Graphics;
 
 /**
  *
- * @author Fiorella Salgado
+ * @author Bryan Garro y Fiorella Salgado
  */
 public abstract class Figura {
     private String nombre;
@@ -37,6 +37,7 @@ public abstract class Figura {
     }
 
     public abstract double calcula_area();
+    public abstract Boolean puntoDentro(int x, int y);
 
     /**
      *

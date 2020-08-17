@@ -5,21 +5,64 @@
  */
 package tarea1;
 
+import java.awt.BorderLayout;
+import java.awt.Container;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Graphics;
+import javax.swing.BorderFactory;
+import static javax.swing.JFrame.EXIT_ON_CLOSE;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.border.BevelBorder;
 
 /**
  *
- * @author Fiorella Salgado
+ * @author Bryan Garro y Fiorella Salgado
  */
 public class Ventana extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Ventana
-     */
+    private JLabel etqEstado;
+    private JScrollPane panelDesplazable;
+    private JTextArea areaTexto;
+    
     public Ventana() {
         initComponents();
+        configurar();
     }
+    private void configurar() {
+        ajustarComponentes(getContentPane());
 
+        setResizable(true);
+        Dimension d = new Dimension(800, 600);
+        setSize(d);
+        setMinimumSize(d);
+        setLocationByPlatform(true);
+
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+    }
+    private void ajustarComponentes(Container c) {
+        c.setLayout(new BorderLayout(4, 4));
+
+        JPanel e1a = new JPanel();
+        e1a.setBorder(BorderFactory.createEmptyBorder(4, 4, 4, 4));
+        e1a.setLayout(new BorderLayout());
+        panelDesplazable = new JScrollPane(areaTexto = new JTextArea(),
+                JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
+                JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+        e1a.add(BorderLayout.CENTER, panelDesplazable);
+        c.add(BorderLayout.CENTER, e1a);
+
+        JPanel e2 = new JPanel();
+        e2.setBorder(BorderFactory.createBevelBorder(BevelBorder.RAISED));
+        e2.setLayout(new FlowLayout(FlowLayout.RIGHT));
+        e2.add(etqEstado = new JLabel("Ingrese "));
+        c.add(BorderLayout.PAGE_END, e2);
+
+        areaTexto.setEditable(false);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

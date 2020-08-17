@@ -9,7 +9,7 @@ import java.awt.Graphics;
 
 /**
  *
- * @author Fiorella Salgado
+ * @author Fiorella Salgado y Bryan Garro
  */
 public class Rectangulo extends Figura{
   private static double base, altura,x,y;
@@ -60,5 +60,10 @@ public double getY(){
                 + altura;
         
         return salida;
+    }
+
+    @Override
+    public Boolean puntoDentro(int x, int y) {
+        return false;
     }
 }

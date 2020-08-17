@@ -9,7 +9,7 @@ import java.awt.Graphics;
 
 /**
  *
- * @author Fiorella Salgado
+ * @author Fiorella Salgado y Bryan Garro
  */
 public class Circulo extends Figura{
     private static double radio,x,y;
@@ -52,5 +52,13 @@ public class Circulo extends Figura{
                 +","+ y + ") y radio "+ 
                 radio;
         return salida;
+    }
+
+    @Override
+    public Boolean puntoDentro(int x, int y) {
+        double d = Math.sqrt(Math.pow(x-this.x,2)+Math.pow(y-this.y,2));
+        if(d<this.getRadio())
+            return true;
+        return false;
     }
 }

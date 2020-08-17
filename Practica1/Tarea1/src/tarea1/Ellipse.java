@@ -9,7 +9,7 @@ import java.awt.Graphics;
 
 /**
  *
- * @author Fiorella Salgado
+ * @author Fiorella Salgado y Bryan Garro
  */
 public class Ellipse extends Figura{
     private static double radio_mayor,radio_menor,x,y;
@@ -59,5 +59,13 @@ public class Ellipse extends Figura{
                 +","+ y + "), radio mayor "+ 
                 radio_mayor + " y radio menor " + radio_menor;
         return salida;
+    }
+
+    @Override
+    public Boolean puntoDentro(int x, int y) {
+        double d = Math.sqrt(Math.pow(x-this.x,2)+Math.pow(y-this.y,2));
+        if(d<this.radio_mayor && d>this.radio_menor)
+            return true;
+        return false;
     }
 }

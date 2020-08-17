@@ -68,4 +68,9 @@ public class Dona extends Figura{
                 radio_mayor + " y radio menor " + radio_menor;
         return salida;
     }
+
+    @Override
+    public Boolean puntoDentro(int x, int y) {
+        return false;
+    }
 }

@@ -18,7 +18,7 @@ import java.util.*;
 
 /**
  *
- * @author Fiorella Salgado
+ * @author Fiorella Salgado y Bryan Garro
  */
 public class Tarea1 {
 
@@ -44,6 +44,9 @@ public class Tarea1 {
                 case "exit":
                         System.out.println("bye :)");
                         return false;
+                case "read":
+                        procesarFichero(commandSplited[1]);
+                        return false;
                  case "help":
                         System.out.println("You can use any of this commands:\n");
                         System.out.println("circle <x> <y> <radius>");
@@ -52,7 +55,7 @@ public class Tarea1 {
                         System.out.println("triangle <x vertice 1> <y vertice 1> <x vertice 2> <y vertice 2> <x vertice 3> <y vertice 3>");
                         System.out.println("donut <x> <y> <radio mayor> <radio menor>");
                         System.out.println("ellipse <x> <y> <radio mayor> <radio menor>");
-                        System.out.println("read file <pathFile>");
+                        System.out.println("read <pathFile>");
                         System.out.println("delete <position>");
                         System.out.println("<coordenadas>");
                         System.out.println("list");
@@ -158,6 +161,16 @@ public class Tarea1 {
                         }
                         break;
                 default:
+                    try
+                    {
+                        double x = Double.parseDouble(commandSplited[0]);
+                        double y = Double.parseDouble(commandSplited[1]);
+                        
+                    }
+                    catch(NumberFormatException e)
+                    { System.out.println("The command \""+commandSplited[0]+"\" does not exist, use command help for more information.\n");
+                        
+                    }
                         //System.out.println("wrong");
                                 System.out.println("The command \""+commandSplited[0]+"\" does not exist, use command help for more information.\n");
                 break;
@@ -211,11 +224,11 @@ public class Tarea1 {
             return comando;
         }
     
-        public void procesarFichero(String path){
-            ArrayList<String> comandos = this.leeFichero(path);
+        public static void procesarFichero(String path){
+            ArrayList<String> comandos = leeFichero(path);
             
             for(String c:comandos){
-                this.eval(c);
+                eval(c);
             }
         }
         
@@ -223,20 +236,20 @@ public class Tarea1 {
         
         
         Tarea1 t = new Tarea1();
-        System.out.println("Digite el comando");
-            Scanner entrada = new Scanner(System.in);
-            String str= entrada.nextLine();
-        t.eval(str);
-//        boolean enEjecucion = true;
-//        while(enEjecucion){
-//            System.out.println("Digite el comando");
+//        System.out.println("Digite el comando");
 //            Scanner entrada = new Scanner(System.in);
 //            String str= entrada.nextLine();
-//            if(str.equals("exit")){
-//                enEjecucion = false;
-//            }
-//            t.eval(str);
-//        }
+//        t.eval(str);
+        boolean enEjecucion = true;
+        while(enEjecucion){
+            System.out.print("cmd> ");
+            Scanner entrada = new Scanner(System.in);
+            String str= entrada.nextLine();
+            if(str.equals("exit")){
+                enEjecucion = false;
+            }
+            t.eval(str);
+        }
     }
     
     

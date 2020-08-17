@@ -9,7 +9,7 @@ import java.awt.Graphics;
 
 /**
  *
- * @author Fiorella Salgado
+ * @author Fiorella Salgado y Bryan Garro
  */
 public class Cuadrado extends Figura{
     private static double lado,x,y;
@@ -55,6 +55,11 @@ public class Cuadrado extends Figura{
                 + x + "," + y + ") y con lado " + 
                 lado;
         return salida;
+    }
+
+    @Override
+    public Boolean puntoDentro(int x, int y) {
+        return false;
     }
 }
 

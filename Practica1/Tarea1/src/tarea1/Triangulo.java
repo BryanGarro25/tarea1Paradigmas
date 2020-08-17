@@ -9,7 +9,7 @@ import java.awt.Graphics;
 
 /**
  *
- * @author Fiorella Salgado
+ * @author Fiorella Salgado y Bryan Garro
  */
 public class Triangulo extends Figura{
     private static double x_vertice1,y_vertice1,x_vertice2, y_vertice2, x_vertice3, y_vertice3;
@@ -85,5 +85,11 @@ public class Triangulo extends Figura{
                 + "," + y_vertice3;
         
         return salida;
+    }
+
+    @Override
+    public Boolean puntoDentro(int x, int y) {
+        
+        return false;
     }
 }
